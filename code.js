@@ -1,5 +1,6 @@
 var letters;
 var words = getColumn("Wordle","validWordleAnswer");
+var word;
 var fwords = [];
 for(var i = 0; i<words.length;i++){
   if(words[i]!=null){
@@ -12,7 +13,7 @@ var correct=0;
 var user_input;
 
 onEvent("startbutton","click",function(){
-var word = fwords[randomNumber(0,fwords.length-1)];
+word = fwords[randomNumber(0,fwords.length-1)];
 word = word.toUpperCase();
 console.log(word);
 letters = word.split('');
@@ -22,8 +23,10 @@ console.log(letters);
   setScreen("Home");
     for(r=1;r<6;r++){
       for(t=1;t<=5;t++){
+        if(getText("r"+r+"t"+t)!=''){
         setProperty("r"+r+"t"+t,"text","");
         setProperty("r"+r+"t"+t,"background-color","white");
+        }
       }
     }
   setProperty("text_input1","hidden",false);
